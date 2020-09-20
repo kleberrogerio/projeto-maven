@@ -3,6 +3,7 @@ create schema avaliacao;
 use avaliacao;
 
 create user 'user'@'localhost' identified by 'pass123';
+grant select, insert, delete, update on avaliacao.* to user@'localhost';
 
 create table pro_professor (
     pro_id bigint unsigned primary key auto_increment,
