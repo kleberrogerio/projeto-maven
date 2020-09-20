@@ -8,8 +8,8 @@ grant select, insert, delete, update on avaliacao.* to user@'localhost';
 create table pro_professor (
     pro_id bigint unsigned primary key auto_increment,
     pro_nome_usuario varchar(50) not null,
-    pro_senha varchar(50) not null,pro_titulo varchar(10),constraint 
-    pro_titulo varchar(10),
+    pro_senha varchar(50) not null,
+    pro_titulo varchar(10),    
     constraint pro_nome_usuario_uk unique (pro_nome_usuario)
 );
 
