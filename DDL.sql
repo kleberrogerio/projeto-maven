@@ -24,8 +24,8 @@ create table alu_aluno (
 
 create table tra_trabalho (
     tra_id bigint unsigned primary key auto_increment,
-    tra_titulo varchar(50) not null,tra_data_hora_entrega datetime not null,
-    tra_data_hora_entrega datatime not null,
+    tra_titulo varchar(50) not null,
+    tra_data_hora_entrega datetime not null,    
     tra_local_arquivo varchar(200) not null,
     pro_avaliador_id bigint unsigned,
     constraint tra_pro_fk foreign key (pro_avaliador_id)
