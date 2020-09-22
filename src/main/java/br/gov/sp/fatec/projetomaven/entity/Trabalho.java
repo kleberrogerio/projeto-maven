@@ -1,6 +1,7 @@
 package br.gov.sp.fatec.projetomaven.entity;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -33,6 +36,12 @@ public class Trabalho {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "pro_avaliador_id")
     private Professor avaliador;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "ent_entrega",
+        joinColumns = { @JoinColumn(name = "tra_id") },
+        inverseJoinColumns = { @JoinColumn(name = "alu_id") })
+    private Set<Aluno>alunos;
 
     public Long getId() {
         return id;
@@ -72,5 +81,13 @@ public class Trabalho {
 
     public void setAvaliador(Professor avaliador) {
         this.avaliador = avaliador;
+    }
+
+    public Set<Aluno> getAlunos() {
+        return alunos;
+    }
+
+    public void setAlunos(Set<Aluno> alunos) {
+        this.alunos = alunos;
     }
 }
