@@ -27,7 +27,7 @@ public class Trabalho {
     @Column(name = "tra_titulo")
     private String titulo;
 
-    @Column(name = "tra_data_hora_enttrega")
+    @Column(name = "tra_data_hora_entrega")
     private Date dataHoraEntrega;
 
     @Column(name = "tra_local_arquivo")
