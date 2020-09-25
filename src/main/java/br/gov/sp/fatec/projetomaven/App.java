@@ -18,7 +18,7 @@ public class App
     {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("avaliacao");
         EntityManager manager = factory.createEntityManager();
-        /*
+        ///*
         Aluno aluno = new Aluno();
         aluno.setNomeUsuario("aluno");
         aluno.setSenha("senha");
@@ -36,7 +36,8 @@ public class App
         catch(PersistenceException e){
             e.printStackTrace();
             manager.getTransaction().rollback();
-        }*/
+        }
+        //*/
         System.out.println(aluno.getId());
         manager.close();    	
     }
