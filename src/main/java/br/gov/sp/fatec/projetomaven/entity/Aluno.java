@@ -27,7 +27,7 @@ public class Aluno {
     @Column(name="alu_ra")
     private Long ra;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY,mappedBy = "alunos")
     private Set<Trabalho> trabalhos;
 
     public Long getId() {
