@@ -41,7 +41,7 @@ public class Trabalho {
     @JoinTable(name = "ent_entrega",
         joinColumns = { @JoinColumn(name = "tra_id") },
         inverseJoinColumns = { @JoinColumn(name = "alu_id") })
-    private Set<Aluno>alunos;
+    private Set<Aluno> alunos;
 
     public Long getId() {
         return id;

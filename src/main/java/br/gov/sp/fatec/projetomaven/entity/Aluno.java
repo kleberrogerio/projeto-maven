@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
 @Table(name = "alu_aluno")
 @Entity
 public class Aluno {
@@ -18,16 +19,16 @@ public class Aluno {
     @Column(name="alu_id")
     private Long id;
     
-    @Column(name="alu_nome_usuario")
+    @Column(name="alu_nome_usuario",unique = true,length = 50, nullable = false)
     private String nomeUsuario;
     
-    @Column(name="alu_senha")
+    @Column(name="alu_senha",length = 50,nullable = false)
     private String senha;
 
     @Column(name="alu_ra")
     private Long ra;
 
-    @ManyToMany(fetch = FetchType.LAZY,mappedBy = "alunos")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "alunos")
     private Set<Trabalho> trabalhos;
 
     public Long getId() {
@@ -62,4 +63,11 @@ public class Aluno {
         this.ra = ra;
     }
     
+    public Set<Trabalho> getTrabalhos(){
+        return trabalhos;
+    }
+
+    public void setTrabalhos(Set<Trabalho> trabalhos){
+        this.trabalhos = trabalhos;
+    }
 }
