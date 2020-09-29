@@ -1,5 +1,8 @@
 package br.gov.sp.fatec.projetomaven;
 
+import java.util.Date;
+import java.util.HashSet;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -70,19 +73,24 @@ public class App
         }
         */
         
-        aluno = manager.find(Aluno.class, aluno.getId);
+        aluno = manager.find(Aluno.class, aluno.getId());
         System.out.println(aluno.getId());
         System.out.println(aluno.getNomeUsuario());  
         for(Trabalho trab: aluno.getTrabalhos()) {
             System.out.println(trab.getTitulo());
         }
         manager.clear();
-        trabalho = manager.find(Trabalho.class,trabalho.getId);
+        trabalho = manager.find(Trabalho.class,trabalho.getId());
         System.out.println(trabalho.getTitulo());
         for(Aluno al: trabalho.getAlunos()){
             System.out.println(al.getNomeUsuario());
         }
-
+        //Apaga registros (permite re-execução)
+        manager.remove(trabalho.getAvaliador());
+        for(Aluno al:trabalho.getAlunos()){
+            manager.remove(al);
+        }
+        manager.remove(trabalho);
 
         manager.close();    	
     }
