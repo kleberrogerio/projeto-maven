@@ -85,6 +85,7 @@ public class App
         for(Aluno al: trabalho.getAlunos()){
             System.out.println(al.getNomeUsuario());
         }
+        
         //Apaga registros (permite re-execução)
         manager.remove(trabalho.getAvaliador());
         for(Aluno al:trabalho.getAlunos()){
