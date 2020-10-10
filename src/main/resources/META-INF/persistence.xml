@@ -6,6 +6,7 @@
         
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
 
+        <class>br.gov.sp.fatec.projetomaven.entity.Usuario</class> 
         <class>br.gov.sp.fatec.projetomaven.entity.Aluno</class>  
         <class>br.gov.sp.fatec.projetomaven.entity.Professor</class>  
         <class>br.gov.sp.fatec.projetomaven.entity.Trabalho</class>        
