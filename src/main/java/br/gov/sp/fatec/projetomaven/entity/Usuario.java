@@ -1,17 +1,24 @@
 package br.gov.sp.fatec.projetomaven.entity;
 
-@Table(name)
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Table(name="usu_usuario")
 @Entity
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="alu_id")
+    @Column(name="usu_id")
     private Long id;
     
-    @Column(name="alu_nome_usuario",unique = true,length = 50, nullable = false)
+    @Column(name="usu_nome_usuario",unique = true,length = 50, nullable = false)
     private String nomeUsuario;
     
-    @Column(name="alu_senha",length = 50,nullable = false)
+    @Column(name="usu_senha",length = 50,nullable = false)
     private String senha;
 
         public Long getId() {
