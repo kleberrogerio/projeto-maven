@@ -1,3 +1,5 @@
+drop schema avaliacao;
+
 create schema avaliacao;
 
 use avaliacao;
