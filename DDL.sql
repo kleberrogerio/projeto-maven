@@ -22,7 +22,7 @@ create table alu_aluno (
     alu_id bigint unsigned primary key,
     alu_ra bigint unsigned not null,
     constraint alu_usu_fk foreign key (alu_id)
-        references usu_usario(usu_id),
+        references usu_usuario(usu_id),
     constraint alu_ra_uk unique (alu_ra)
     );
 

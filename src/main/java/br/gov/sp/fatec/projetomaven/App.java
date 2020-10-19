@@ -2,6 +2,7 @@ package br.gov.sp.fatec.projetomaven;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -87,12 +88,23 @@ public class App
         }
         
         //Apaga registros (permite re-execução)
-        manager.remove(trabalho.getAvaliador());
-        for(Aluno al:trabalho.getAlunos()){
-            manager.remove(al);
+        try{
+            manager.getTransaction().begin();
+            professor = trabalho.getAvaliador();
+            trabalho.setAvaliador(null);
+            Set<Aluno> alunos = trabalho.getAlunos();
+            trabalho.setAlunos(null);
+            manager.remove(trabalho);
+            manager.remove(professor);
+            for(Aluno al:alunos){
+                manager.remove(al);
+            }
+            manager.getTransaction().rollback();
         }
-        manager.remove(trabalho);
-
+        catch(PersistenceException e){
+            e.printStackTrace();
+            manager.getTransaction().rollback();
+        }
         manager.close();    	
     }
 }
