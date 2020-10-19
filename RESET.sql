@@ -7,7 +7,7 @@ use avaliacao;
 create user 'user'@'localhost' identified by 'pass123';
 grant select, insert, delete, update on avaliacao.* to user@'localhost';
 
-create table usu_usario(
+create table usu_usuario(
     usu_id bigint unsigned primary key auto_increment,
     usu_nome_usuario varchar(50) not null,
     usu_senha varchar(50) not null,
