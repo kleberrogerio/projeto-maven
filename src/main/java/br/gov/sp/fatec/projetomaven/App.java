@@ -40,6 +40,7 @@ public class App
         trabalho.setAlunos(new HashSet<Aluno>());
         trabalho.getAlunos().add(aluno);
 
+        //Salva aluno, professor e trabalho
         try{
             manager.getTransaction().begin();
             manager.persist(aluno);
@@ -51,6 +52,7 @@ public class App
             e.printStackTrace();
             manager.getTransaction().rollback();
         }
+        //Limpa o cache para forçar a execução de select
         manager.clear();
 
         /*
@@ -74,13 +76,17 @@ public class App
         }
         */
         
+        //Busca o aluno pelo ID
         aluno = manager.find(Aluno.class, aluno.getId());
         System.out.println(aluno.getId());
         System.out.println(aluno.getNomeUsuario());  
         for(Trabalho trab: aluno.getTrabalhos()) {
             System.out.println(trab.getTitulo());
         }
+        //Limpa o cache para forçar a execução de select
         manager.clear();
+
+        //Busca o trabalho pelo ID
         trabalho = manager.find(Trabalho.class,trabalho.getId());
         System.out.println(trabalho.getTitulo());
         for(Aluno al: trabalho.getAlunos()){
