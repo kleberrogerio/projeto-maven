@@ -2,12 +2,14 @@ package br.gov.sp.fatec.projetomaven;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceException;
+import javax.persistence.TypedQuery;
 
 import br.gov.sp.fatec.projetomaven.entity.Aluno;
 import br.gov.sp.fatec.projetomaven.entity.Professor;
@@ -54,27 +56,6 @@ public class App
         }
         //Limpa o cache para forçar a execução de select
         manager.clear();
-
-        /*
-        Aluno aluno = new Aluno();
-        aluno.setNomeUsuario("aluno");
-        aluno.setSenha("senha");
-        aluno.setRa(1234567891011L);
-
-        Professor professor = new Professor();
-        professor.setNomeUsuario("mineda");
-        professor.setSenha("senhaForte");
-        try{
-            manager.getTransaction().begin();
-            manager.persist(aluno);
-            manager.persist(professor);
-            manager.getTransaction().commit();
-            }
-        catch(PersistenceException e){
-            e.printStackTrace();
-            manager.getTransaction().rollback();
-        }
-        */
         
         //Busca o aluno pelo ID
         aluno = manager.find(Aluno.class, aluno.getId());
@@ -92,7 +73,27 @@ public class App
         for(Aluno al: trabalho.getAlunos()){
             System.out.println(al.getNomeUsuario());
         }
+        trabalho.setTitulo("Novo Trabalho 2 - JPA");
         
+        try{
+            manager.getTransaction().begin();
+            manager.merge(trabalho);
+            manager.getTransaction().commit();
+        }
+        catch(PersistenceException e){
+            e.printStackTrace();
+            manager.getTransaction().rollback();
+        }
+
+        String queryString = "select t from Trabalho t where t.titulo like :titulo";
+        TypedQuery<Trabalho> query = manager.createQuery(queryString,Trabalho.class);
+        query.setParameter("titulo","%JPA%");
+
+        List<Trabalho> resultados = query.getResultList();
+        for(Trabalho trab:resultados){
+            System.out.println("Titulo: "+trab.getTitulo());
+        }
+
         //Apaga registros (permite re-execução)
         try{
             manager.getTransaction().begin();

@@ -28,7 +28,7 @@ create table alu_aluno (
         references usu_usuario(usu_id),
     constraint alu_ra_uk unique (alu_ra)
     );
-
+    
 create table tra_trabalho (
     tra_id bigint unsigned primary key auto_increment,
     tra_titulo varchar(50) not null,
