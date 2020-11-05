@@ -85,9 +85,9 @@ public class App
             manager.getTransaction().rollback();
         }
 
-        String queryString = "select t from Trabalho t where t.titulo like :titulo";
+        String queryString = "select t from Trabalho t inner join t.alunos a where a.nomeUsuario like :nome";
         TypedQuery<Trabalho> query = manager.createQuery(queryString,Trabalho.class);
-        query.setParameter("titulo","%JPA%");
+        query.setParameter("nome","%bd%");
 
         List<Trabalho> resultados = query.getResultList();
         for(Trabalho trab:resultados){
