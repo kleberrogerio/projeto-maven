@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
@@ -15,16 +13,13 @@ import br.gov.sp.fatec.projetomaven.entity.Aluno;
 import br.gov.sp.fatec.projetomaven.entity.Professor;
 import br.gov.sp.fatec.projetomaven.entity.Trabalho;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args )
     {
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("avaliacao");
-        EntityManager manager = factory.createEntityManager();
+        EntityManager manager = PersistenceManager.getInstance().getEntityManager();
+
+        //Instancia um novo aluno
         Aluno aluno = new Aluno();
         aluno.setNomeUsuario("alunofatec");
         aluno.setSenha("senha");

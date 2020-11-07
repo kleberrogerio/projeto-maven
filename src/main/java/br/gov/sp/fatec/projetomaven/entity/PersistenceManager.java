@@ -5,30 +5,37 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class PersistenceManager {
+
     private static PersistenceManager instance;
+
     private PersistenceManager () {
     }
+
     protected EntityManagerFactory emf;
+
     public static PersistenceManager getInstance() {
-    if(instance == null) {
-    instance = new PersistenceManager();
+        if(instance == null) {
+            instance = new PersistenceManager();
+        }
+        return instance;
     }
-    return instance;
-    }
+
     public EntityManagerFactory getEntityManagerFactory() {
-    if(emf == null) {
-    createEntityManagerFactory();
+        if(emf == null) {
+            createEntityManagerFactory();
+        }
+        return emf;
     }
-    return emf;
-    }
+
     public EntityManager getEntityManager() {
-    if(emf == null) {
-    createEntityManagerFactory();
+        if(emf == null) {
+            createEntityManagerFactory();
+        }
+        return emf.createEntityManager();
     }
-    return emf.createEntityManager();
-    }
+
     private void createEntityManagerFactory() {
-    emf = Persistence.createEntityManagerFactory("avaliacao");
+        emf = Persistence.createEntityManagerFactory("avaliacao");
     }
 }
     
