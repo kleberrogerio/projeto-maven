@@ -10,6 +10,7 @@ import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
 import br.gov.sp.fatec.projetomaven.entity.Aluno;
+import br.gov.sp.fatec.projetomaven.entity.PersistenceManager;
 import br.gov.sp.fatec.projetomaven.entity.Professor;
 import br.gov.sp.fatec.projetomaven.entity.Trabalho;
 
