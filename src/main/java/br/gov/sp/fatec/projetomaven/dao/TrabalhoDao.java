@@ -4,7 +4,7 @@ import br.gov.sp.fatec.projetomaven.entity.Trabalho;
 
 public interface TrabalhoDao {
 
-    public Trabalho salvarTrabalho(Trabalho professor);
+    public Trabalho salvarTrabalho(Trabalho trabalho);
     
     public Trabalho buscarTrabalho(Long id);
 

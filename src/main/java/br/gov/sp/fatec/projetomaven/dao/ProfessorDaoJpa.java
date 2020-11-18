@@ -30,12 +30,7 @@ public class ProfessorDaoJpa implements ProfessorDao {
     public Professor salvarProfessor(Professor professor){
         try{
             em.getTransaction().begin();
-            if(professor.getId()==null){
-                em.persist(professor);
-            }
-            else{
-                em.merge(professor);
-            }
+        salvarProfessorSemCommit(professor);
             em.getTransaction().commit();
             return professor;
         }
@@ -44,7 +39,19 @@ public class ProfessorDaoJpa implements ProfessorDao {
             em.getTransaction().rollback();
             throw new RuntimeException("Erro ao salvar Professor!", e);
         }    
+    } 
+
+    @Override
+    public Professor salvarProfessorSemCommit(Professor professor){
+        if(professor.getId()==null){
+            em.persist(professor);
+            }
+        else{
+            em.merge(professor);
+        }
+        return professor;           
     }   
+  
 
     @Override
     public Professor buscarProfessor(String nomeUsuario) {

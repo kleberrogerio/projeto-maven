@@ -39,17 +39,8 @@ public class App
         trabalho.getAlunos().add(aluno);
 
         //Salva aluno, professor e trabalho
-        try{
-            manager.getTransaction().begin();
-            manager.persist(aluno);
-            manager.persist(professor);
-            manager.persist(trabalho);
-            manager.getTransaction().commit();
-            }
-        catch(PersistenceException e){
-            e.printStackTrace();
-            manager.getTransaction().rollback();
-        }
+        TrabalhoDao trabalhoDao = new TrabalhoDaoJpa(manager);
+        trabalhoDao.salvarTrabalho(trabalho);
         //Limpa o cache para forçar a execução de select
         manager.clear();
         

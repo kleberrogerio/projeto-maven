@@ -7,6 +7,8 @@ public interface AlunoDao{
 
     public Aluno salvarAluno(Aluno aluno);
 
+    public Aluno salvarAlunoSemCommit(Aluno aluno);
+
     public Aluno buscarAlunoPorRa(Long ra);
 
     public void removerAluno(Long ra); 

@@ -31,12 +31,7 @@ public class AlunoDaoJpa implements AlunoDao {
     public Aluno salvarAluno(Aluno aluno){
         try{
             em.getTransaction().begin();
-            if(aluno.getId()==null){
-                em.persist(aluno);
-            }
-            else{
-                em.merge(aluno);
-            }
+            salvarAlunoSemCommit(aluno);
             em.getTransaction().commit();
             return aluno;
         }
@@ -45,6 +40,18 @@ public class AlunoDaoJpa implements AlunoDao {
             em.getTransaction().rollback();
             throw new RuntimeException("Erro ao salvar Aluno!", e);
         }    
+    }   
+
+     @Override
+    public Aluno salvarAlunoSemCommit(Aluno aluno){
+            if(aluno.getId()==null){
+                em.persist(aluno);
+            }
+            else{
+                em.merge(aluno);
+            }
+            return aluno;
+        }            
     }   
 
     @Override

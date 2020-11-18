@@ -7,6 +7,8 @@ public interface ProfessorDao {
 
     public Professor salvarProfessor(Professor professor);
 
+    public Professor salvarProfessorSemCommit(Professor professor);
+
     public Professor buscarProfessor(String nomeUsuario);
 
     public void removerProfessor(String nomeUsuario); 
