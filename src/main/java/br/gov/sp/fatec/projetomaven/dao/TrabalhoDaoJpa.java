@@ -3,6 +3,7 @@ package br.gov.sp.fatec.projetomaven.dao;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 
+import br.gov.sp.fatec.projetomaven.entity.Aluno;
 import br.gov.sp.fatec.projetomaven.entity.PersistenceManager;
 import br.gov.sp.fatec.projetomaven.entity.Trabalho;
 

@@ -9,6 +9,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
+import br.gov.sp.fatec.projetomaven.dao.TrabalhoDao;
+import br.gov.sp.fatec.projetomaven.dao.TrabalhoDaoJpa;
 import br.gov.sp.fatec.projetomaven.entity.Aluno;
 import br.gov.sp.fatec.projetomaven.entity.PersistenceManager;
 import br.gov.sp.fatec.projetomaven.entity.Professor;
@@ -93,7 +95,7 @@ public class App
             for(Aluno al:alunos){
                 manager.remove(al);
             }
-            manager.getTransaction().rollback();
+            manager.getTransaction().commit();
         }
         catch(PersistenceException e){
             e.printStackTrace();

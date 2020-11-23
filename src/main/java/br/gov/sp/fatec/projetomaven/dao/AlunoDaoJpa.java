@@ -51,8 +51,8 @@ public class AlunoDaoJpa implements AlunoDao {
                 em.merge(aluno);
             }
             return aluno;
-        }            
-    }   
+        }           
+  
 
     @Override
     public Aluno buscarAlunoPorRa(Long ra) {
@@ -72,5 +72,4 @@ public class AlunoDaoJpa implements AlunoDao {
         em.remove(aluno);
         em.getTransaction().commit();        
     }
-		
 }
