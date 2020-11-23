@@ -30,7 +30,7 @@ public class ProfessorDaoJpa implements ProfessorDao {
     public Professor salvarProfessor(Professor professor){
         try{
             em.getTransaction().begin();
-        salvarProfessorSemCommit(professor);
+            salvarProfessorSemCommit(professor);
             em.getTransaction().commit();
             return professor;
         }
