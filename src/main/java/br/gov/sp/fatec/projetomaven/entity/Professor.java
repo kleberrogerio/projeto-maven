@@ -17,7 +17,7 @@ public class Professor extends Usuario{
     private String titulo;
 
     @OneToMany(fetch=FetchType.LAZY,mappedBy = "avaliador")
-    private Set<Trabalho> trabalhoAvaliados;
+    private Set<Trabalho> trabalhosAvaliados;
 
     public String getTitulo() {
         return titulo;
@@ -28,10 +28,10 @@ public class Professor extends Usuario{
     }
 
     public Set<Trabalho> getTrabalhoAvaliados() {
-        return trabalhoAvaliados;
+        return trabalhosAvaliados;
     }
 
     public void setTrabalhoAvaliados(Set<Trabalho> trabalhoAvaliados) {
-        this.trabalhoAvaliados = trabalhoAvaliados;
+        this.trabalhosAvaliados = trabalhoAvaliados;
     }
 }

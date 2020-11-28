@@ -18,10 +18,10 @@ public abstract class Usuario {
     @Column(name="usu_id")
     private Long id;
     
-    @Column(name="usu_nome_usuario",unique = true,length = 50, nullable = false)
+    @Column(name="usu_nome_usuario")
     private String nomeUsuario;
     
-    @Column(name="usu_senha",length = 50,nullable = false)
+    @Column(name="usu_senha")
     private String senha;
 
         public Long getId() {
